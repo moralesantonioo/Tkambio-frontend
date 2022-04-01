@@ -4,7 +4,30 @@
     <div class="reportes">
       <h1 class="title">Generador de reportes TK</h1>
       <div class="historial-reportes"> 
-      
+        <div class="historial-reportes-header"> 
+          <div class="data-header">
+            <div class="data-content" >
+              <span>Titulo</span>
+              <span>Fecha de creacion</span>
+              <span>Acción</span>
+            </div>
+            <div class="linea"></div>
+          </div>
+        </div>
+        <div class="section-reports">  
+          <div class="reports">
+            <div class="data" v-for="data in datos" :key="data">
+              <div class="data-content">
+                <span>{{data.title}}</span>
+                <div class="lineaR"></div>
+                <span>{{data.date}}</span>
+                <div class="lineaR"></div>
+                <span>{{data.action}}</span>
+              </div>
+              <div class="linea2"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="button" @click="crearReporte()">Crear reporte</div>
     </div>
@@ -18,7 +41,24 @@ import popup from '../components/popup.vue'
 export default {
   data(){
     return{ 
-      show: false
+      show: false,
+      datos: [
+        {
+          title: 'Reporte de usuario 1',
+          date: '04/02/2020',
+          action: 'Descargar'
+        },
+        {
+          title: 'Reporte de usuario 2',
+          date: '08/05/2021',
+          action: 'Descargar'
+        },
+        {
+          title: 'Reporte de usuario 3',
+          date: '20/08/2021',
+          action: 'Descargar'
+        }
+      ]
     }
   },
 
@@ -66,6 +106,73 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
+      .historial-reportes-header{
+        width: 100%;
+        .data-header{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          .data-content{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 0 0 0;
+          }
+          .linea{
+            width: 95%;
+            height: 4px;
+            background: #C4C4C4;
+             margin: 10px 0px;
+          }
+        } 
+      }
+      .section-reports{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        //margin: -80px 0 10px 0;
+        .reports{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          .data{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            font-size: 12px;
+            .data-content{
+              width: 100%;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              flex-direction: row;
+              padding: 8px 0;
+              .lineaR{
+                width: 4px;
+                height: 20px;
+                background: #C4C4C4;
+              }
+            }
+            .linea2{
+              width: 95%;
+              height: 1px;
+              background: #C4C4C4;
+            }
+          }
+        }
+      }
     }
     .button{
       width: 187px;
